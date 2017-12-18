@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.Header {
+  height: 40px;
+  width: 100%;
+  border-bottom: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.searchInput {
+  height: 10px;
+  width: 80px;
+}
