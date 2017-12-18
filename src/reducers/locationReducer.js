@@ -7,7 +7,9 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_LOCATION:
         console.log('SET_LOCATION: ' + JSON.stringify(action.payload));
-        console.log('SET_LOCATION: ' + JSON.stringify(action.lat));
+        newState['location'] = action.payload
+        console.log(newState);
+        return newState;
     default:
       return state;
 
