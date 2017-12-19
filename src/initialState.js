@@ -1,6 +1,7 @@
 const initialState = {
   address: '',
-  type: ''
+  type: '',
+  apiData: []
 }
 
 export default initialState;
