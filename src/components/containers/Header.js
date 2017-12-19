@@ -12,7 +12,6 @@ class Header extends Component {
     this.onChange = (address) => this.setState({address});
     }
 
-
   handleFormSubmit = () => {
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
@@ -25,7 +24,7 @@ class Header extends Component {
       value: this.state.address,
       onChange: this.onChange
     }
-    console.log(this.state.address);
+    console.log(this.props.location);
     return (
       <div className="Header">
         <PlacesAutocomplete className="autos" inputProps={inputProps}/>

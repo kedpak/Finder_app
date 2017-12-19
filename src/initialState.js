@@ -1,6 +1,5 @@
 const initialState = {
   address: '',
-  location: '',
   type: ''
 }
 
