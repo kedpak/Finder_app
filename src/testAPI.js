@@ -3,17 +3,16 @@ let axios = require('axios');
 
 
 getApi = () => {
-    axios.get('https://api.foursquare.com/v2/venues/search', {
+    axios.get('https://api.foursquare.com/v2/venues/502e2b0be4b0c65b4a278c4f/photos', {
 	    params: {
-		client_id: 'CWZSTYEOSJ0LVZXRMQNMYKD5GOG2FY0YWU2ZVW4CNS0A42PJ',
-		client_secret: '5QGV304KK1T5OYOF1CBKMEK0FF2QDELDCVFGVAVEBZUZ1ADW',
-		ll: '40.7243,-74.0018',
-		query: 'mexican',
+		client_id: 'RN3TFCPNS0XOCEGT2XEC4E5ZCHMFA2BPSIJ5UIKZT3ROTWOU',
+		client_secret: 'AHW0LBIZY2IAMIAGFFQ2FKZB44AVMW4UVF5QAJRY4N1S5OPN',
+		VENUE_ID: '502e2b0be4b0c65b4a278c4f',
+		limit: 1,
 		v: '20170801',
-		limit: 1
 	    }
 	}).then(res => {
-	    console.log(res.data.response.venues[0]);
+	    console.log(res.data.response.photos.items);
 	    }).catch(error => {
 		    console.log(error);
 		});
