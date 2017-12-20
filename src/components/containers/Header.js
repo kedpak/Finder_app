@@ -5,7 +5,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import { setLocation, setData, setPhotos } from '../../actions/actions';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import store from '../../store';
+
 
 class Header extends Component {
   constructor() {
@@ -28,14 +28,13 @@ class Header extends Component {
         		limit: 200
       	    }
           }).then(res => {
-            console.log('venue ' + res.data.response.venues.length)
             this.props.setData(res.data.response.venues);
             this.getPhoto()
           }).catch(error => {
       		    console.log(error);
       		})
   }
-
+  /* grab photos from api and set them into store */
   getPhoto = () => {
       this.props.apiData.apiData.map(items => {
         let string = "https://api.foursquare.com/v2/venues/" + items.id + '/photos';
@@ -45,15 +44,16 @@ class Header extends Component {
           client_secret: 'AHW0LBIZY2IAMIAGFFQ2FKZB44AVMW4UVF5QAJRY4N1S5OPN',
           v: '20170801',
           VENUE_ID: items.id,
-          limit: 200,
+          limit: 1,
           }
           }).then(res => {
-              console.log(items.id)
               let obj = {
                 id: items.id,
-                photos: res.data.response.photos.items[0].prefix + '300x300' + res.data.response.photos.items[0].suffix
-              }
-              console.log(obj);
+                photos: res.data.response.photos.items[0].prefix +
+                  '300x300' + res.data.response.photos.items[0].suffix
+                }
+              console.log('this is obj  '+ JSON.stringify(obj));
+              console.log(this.props.photos.photos)
               this.props.setPhotos(obj)
             }).catch(error => {
                 console.log(error);

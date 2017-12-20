@@ -22,11 +22,12 @@ body {
 }
 
 .row {
-  width: 250px;
+  width: 310px;
   float: left;
-  height: 230px;
+  height: 380px;
   border: 1px;
   border-style: solid;
+  margin: 15px;
 }
 
 .button {

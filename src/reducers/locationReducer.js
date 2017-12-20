@@ -13,7 +13,11 @@ export default function(state = initialState, action) {
         newState['apiData'] = action.payload;
         return newState;
     case SET_PHOTOS:
-        newState['photos'].push(action.payload);
+        /* condition prevents multiple photos from being pushed into same container */
+        if (newState['photos'].indexOf(action.payload) == -1){
+          newState['photos'].push(action.payload);
+        }
+        console.log(newState['photos']);
         return newState
     default:
       return state;

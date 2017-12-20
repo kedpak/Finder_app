@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import initialState from '../../initialState';
 import { setLocation, setData, setPhotos} from '../../actions/actions';
 import { connect } from 'react-redux';
-import getPhotos from './getPhotos';
-import axios from 'axios';
 
 class Results extends Component {
 
@@ -22,10 +19,8 @@ class Results extends Component {
                 if (item.id === items.id) {
                     return (<img src={item.photos}/>)
                 }
-                  
-
+                return 
               })}
-
             </div>
           )
       })}
