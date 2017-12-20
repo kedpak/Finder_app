@@ -1,5 +1,5 @@
 const initialState = {
-  address: '',
+  location: '',
   type: '',
   apiData: []
 }

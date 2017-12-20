@@ -6,6 +6,7 @@ export default function(state = initialState, action) {
 
   switch (action.type) {
     case SET_API_DATA:
+      console.log("this is paload" + action.payload[0].name)
       action.payload.map(items => {
         newState['apiData'].push(items)
       })

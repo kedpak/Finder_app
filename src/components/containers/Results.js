@@ -7,11 +7,29 @@ let axios = require('axios');
 
 class Results extends Component {
 
-  render() {
-    console.log(this.props.location);
+
+  /* builds rows as displays which match results from correct gps coords */
+  buildRows = () => {
+
     return (
       <div>
+      {this.props.apiData.apiData.map(items => {
+        return (
+            <div className="row">
+              <div className="rowName" key={items}>{items.name}</div>
+              <div className="rowPhone" key={items}>{items.contact.phone}</div>
+            </div>
+          )
+      })}
+      </div>
+    )
+  }
+  render() {
 
+    const rows = this.buildRows();
+    return (
+      <div className="resultRow">
+        {rows}
       </div>
     )
   }

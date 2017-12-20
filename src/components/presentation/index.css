@@ -20,3 +20,21 @@ body {
 .autos {
   width: 80px;
 }
+
+.row {
+  width: 250px;
+  float: left;
+  height: 230px;
+  border: 1px;
+  border-style: solid;
+}
+
+.button {
+  height: 20px;
+
+}
+#PlacesAutocomplete__root {
+  width: 300px;
+  float: left;
+  margin: auto;
+}
