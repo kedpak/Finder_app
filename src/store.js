@@ -7,7 +7,9 @@ import locationReducer from './reducers/locationReducer';
 const reducers = combineReducers({
     location: locationReducer,
     apiData: locationReducer,
-    photos: locationReducer
+    photos: locationReducer,
+    coord: locationReducer,
+    togglePopUp: locationReducer
 })
 
 const store = createStore(

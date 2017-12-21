@@ -3,7 +3,9 @@ const initialState = {
   type: '',
   apiData: [],
   photos: [],
-  query: ''
+  query: '',
+  coord: '',
+  togglePopUp: false
 }
 
 export default initialState;

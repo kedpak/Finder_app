@@ -1,4 +1,4 @@
-import { SET_LOCATION, SET_API_DATA, SET_PHOTOS } from '../constants/constants';
+import { SET_LOCATION, SET_API_DATA, SET_PHOTOS, MAP_COORD, TOGGLE_POPUP } from '../constants/constants';
 import initialState from '../initialState';
 
 export default function(state = initialState, action) {
@@ -14,11 +14,20 @@ export default function(state = initialState, action) {
         return newState;
     case SET_PHOTOS:
         /* condition prevents multiple photos from being pushed into same container */
-        if (newState['photos'].indexOf(action.payload) == -1){
+        if (newState['photos'].indexOf(action.payload) === -1){
           newState['photos'].push(action.payload);
+          return newState;
         }
         console.log(newState['photos']);
-        return newState
+        return newState;
+    case MAP_COORD:
+      newState['coord'] = action.payload;
+      console.log(newState);
+      return newState;
+    case TOGGLE_POPUP:
+      newState['togglePopUp'] = !newState['togglePopUp'];
+      console.log(newState['togglePopUp']);
+      return newState;
     default:
       return state;
   }

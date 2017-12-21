@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import initialState from '../../initialState';
 import SelectQuery from '../presentation/selectyQuery';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { setLocation, setData, setPhotos } from '../../actions/actions';
+import { setLocation, setData, setPhotos, setCoord } from '../../actions/actions';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -28,8 +29,8 @@ class Header extends Component {
           console.log(query)
           axios.get('https://api.foursquare.com/v2/venues/search', {
       	    params: {
-        		client_id: 'YG4PLISZKCEY4BGBC42XNPKXPC3JJ0KXCPZ0WMTSPSI2DWFT',
-        		client_secret: 'VQK3RSPV4V2UM4HJOCHL2XRMUGOQYACBDJ5BIEBC210W2FV4',
+        		client_id: 'ZGCR5PQHXOYXY5SBUSBUOZV4MYS300FPGL13YXVSCW1JXQLP',
+        		client_secret: 'V5IXEPB2MXLKYVK02QVVKOT5HTQCKLRZC5MWPXBD1AKHTNGZ',
         		ll: lat + ',' + lng,
         		query: query,
         		v: '20170801',
@@ -48,8 +49,8 @@ class Header extends Component {
         let string = "https://api.foursquare.com/v2/venues/" + items.id + '/photos';
         axios.get(string , {
           params: {
-          client_id: 'YG4PLISZKCEY4BGBC42XNPKXPC3JJ0KXCPZ0WMTSPSI2DWFT',
-          client_secret: 'VQK3RSPV4V2UM4HJOCHL2XRMUGOQYACBDJ5BIEBC210W2FV4',
+          client_id: 'ZGCR5PQHXOYXY5SBUSBUOZV4MYS300FPGL13YXVSCW1JXQLP',
+          client_secret: 'V5IXEPB2MXLKYVK02QVVKOT5HTQCKLRZC5MWPXBD1AKHTNGZ',
           v: '20170801',
           VENUE_ID: items.id,
           limit: 1,
@@ -99,7 +100,8 @@ const mapStateToProps = (state) => {
   return {
     location: state.location,
     apiData: state.apiData,
-    photos: state.photos
+    photos: state.photos,
+    coord: state.coord
   }
 }
 
@@ -107,7 +109,8 @@ const dispatchToProps = (dispatch) => {
   return {
     setLocation: (location) => dispatch(setLocation(location)),
     setData: (data) => dispatch(setData(data)),
-    setPhotos: (photos) => dispatch(setPhotos(photos))
+    setPhotos: (photos) => dispatch(setPhotos(photos)),
+    setCoord: (lnglat) => dispatch(setCoord(lnglat))
   }
 }
 

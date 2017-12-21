@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { setLocation, setData, setPhotos} from '../../actions/actions';
+import { setLocation, setData, setPhotos, setCoord, togglePopUp } from '../../actions/actions';
 import { connect } from 'react-redux';
 
 class Results extends Component {
 
+  click = () => {
+    this.props.togglePopUp();
+  }
   /* builds rows as displays which match results from correct gps coords */
-  buildRows = () => {
+  buildRows = (click) => {
     return (
       <div>
       {this.props.apiData.apiData.map(items => {
         return (
-            <div className="row">
+            <div className="row" onClick={(event) => {this.props.setCoord(items.location); this.props.togglePopUp();}} >
               <div className="rowName" key={items}>{items.name}</div>
               <div className="rowPhone" key={items}>{items.contact.phone}</div>
               <div className="rowPhone" key={items}>{items.id}</div>
@@ -28,9 +31,9 @@ class Results extends Component {
     )
   }
   render() {
-
-    const rows = this.buildRows();
-    console.log('this is photos ' + JSON.stringify(this.props.photos.photos));
+    const { click } = this.props;
+    const rows = this.buildRows(click);
+    console.log(this.props.coord);
     return (
       <div className="resultRow">
         {rows}
@@ -43,7 +46,9 @@ const mapStateToProps = (state) => {
   return {
     location: state.location,
     apiData: state.apiData,
-    photos: state.photos
+    photos: state.photos,
+    coord: state.coord,
+    popUp: state.togglePopUp
   }
 }
 
@@ -51,7 +56,9 @@ const dispatchToProps = (dispatch) => {
   return {
       setLocation: (location) => dispatch(setLocation(location)),
       setData: (data) => dispatch(setData(data)),
-      setPhotos: (photos) => dispatch(setPhotos(photos))
+      setPhotos: (photos) => dispatch(setPhotos(photos)),
+      setCoord: (lnglat) => dispatch(setCoord(lnglat)),
+      togglePopUp: () => dispatch(togglePopUp())
   }
 }
 export default connect(mapStateToProps, dispatchToProps)(Results);

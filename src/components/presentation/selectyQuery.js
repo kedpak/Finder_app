@@ -5,9 +5,8 @@ import 'react-select/dist/react-select.css';
 /* Implements select menu for type of search */
 class SelectQuery extends Component {
   render() {
-    const { state, option} = this.props;
+    const { state, option } = this.props;
     return(
-
       <Select
         name="form-field-name"
         className="selectQuery"
@@ -30,7 +29,6 @@ class SelectQuery extends Component {
           { value: 'Italian', label: 'Italian' },
           { value: 'Indian', label: 'Indian' },
           { value: 'Mediterranean', label: 'Mediterranean' }
-
         ]}
         clearable={false}
       />
