@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import initialState from '../../initialState';
+import SelectQuery from '../presentation/selectyQuery';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { setLocation, setData, setPhotos } from '../../actions/actions';
 import { connect } from 'react-redux';
@@ -14,16 +15,23 @@ class Header extends Component {
     this.onChange = (address) => this.setState({address});
     }
 
+
+    changeOption = (state) => {
+      this.setState({
+        query: state
+      })
+    }
   /* returns the data grabbed from api and sets coords/type */
-  returnData = (location) => {
+  returnData = (location, query) => {
           const lat = location.lat;
           const lng = location.lng;
+          console.log(query)
           axios.get('https://api.foursquare.com/v2/venues/search', {
       	    params: {
         		client_id: 'YG4PLISZKCEY4BGBC42XNPKXPC3JJ0KXCPZ0WMTSPSI2DWFT',
         		client_secret: 'VQK3RSPV4V2UM4HJOCHL2XRMUGOQYACBDJ5BIEBC210W2FV4',
         		ll: lat + ',' + lng,
-        		query: 'mexican',
+        		query: query,
         		v: '20170801',
         		limit: 200
       	    }
@@ -52,7 +60,7 @@ class Header extends Component {
               photos: (res.data.response.photos.items[0] ?
                 res.data.response.photos.items[0].prefix +
                   '300x300' + res.data.response.photos.items[0].suffix :
-                'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg')
+                'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg  ')
               }
               this.props.setPhotos(obj);
             }).catch(error => {
@@ -65,7 +73,7 @@ class Header extends Component {
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.props.setLocation(latLng))
-      .then(res => {this.returnData(this.props.location.location)})
+      .then(res => {this.returnData(this.props.location.location, JSON.stringify(this.state.query.label))})
       .catch(error => console.error('Error', error))
     /* reset api data list back to empty for new search */
     this.props.apiData.apiData = [];
@@ -76,11 +84,12 @@ class Header extends Component {
       value: this.state.address,
       onChange: this.onChange
     }
-    console.log(this.props.apiData)
+    console.log(this.state.query.label)
     return (
       <div className="Header">
         <PlacesAutocomplete className="autos" inputProps={inputProps}/>
         <button onClick={this.handleFormSubmit} className="button">Submit</button>
+        <SelectQuery state={this.state.query} option={this.changeOption} />
       </div>
     )
   }

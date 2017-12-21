@@ -2,7 +2,8 @@ const initialState = {
   location: '',
   type: '',
   apiData: [],
-  photos: []
+  photos: [],
+  query: ''
 }
 
 export default initialState;
