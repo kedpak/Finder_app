@@ -6,7 +6,9 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class MapResult extends Component {
 
-
+  closeMap = () => {
+    this.props.togglePopUp();
+  }
   buildMap = () => {
     console.log(this.props.coord.coord.lat);
     return (
@@ -16,7 +18,14 @@ class MapResult extends Component {
               lat: this.props.coord.coord.lat,
               lng: this.props.coord.coord.lng
             }}
-          style={{width:'300px', height:'300px', position:'center'}}/>
+          style={{width:'300px', height:'300px', position:'relative', margin:'auto'}}>
+          <Marker onClick={this.onMarkerClick}
+                       name={'Current location'} />
+                   <InfoWindow onClose={this.onInfoWindowClose}>
+                   </InfoWindow>
+                  <button className="mapButton" onClick={this.closeMap}> Close </button>
+          </Map>
+          <button className="mapButton" onClick={this.closeMap}> Close </button>
       </div>
     )
   }
@@ -25,7 +34,7 @@ class MapResult extends Component {
     const map = this.buildMap();
     console.log(this.props.popUp.togglePopUp)
     return (
-      <div>
+      <div className="mapRow">
         {this.props.popUp.togglePopUp ? this.buildMap() : null}
       </div>
     )

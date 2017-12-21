@@ -19,9 +19,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Results click={this.onResultClick}/>
-        <div>
         <MapPopup />
-        </div>
+
       </div>
     );
   }

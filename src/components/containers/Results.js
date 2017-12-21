@@ -20,7 +20,7 @@ class Results extends Component {
               <div className="rowPhone" key={items}>{items.id}</div>
               {this.props.photos.photos.map(item => {
                 if (item.id === items.id) {
-                  return (<img src={item.photos}/>)
+                  return (<img src={item.photos} className="pic"/>)
                 }
               return
               })}
