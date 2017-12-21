@@ -20,8 +20,8 @@ class Header extends Component {
           const lng = location.lng;
           axios.get('https://api.foursquare.com/v2/venues/search', {
       	    params: {
-        		client_id: 'RN3TFCPNS0XOCEGT2XEC4E5ZCHMFA2BPSIJ5UIKZT3ROTWOU',
-        		client_secret: 'AHW0LBIZY2IAMIAGFFQ2FKZB44AVMW4UVF5QAJRY4N1S5OPN',
+        		client_id: 'YG4PLISZKCEY4BGBC42XNPKXPC3JJ0KXCPZ0WMTSPSI2DWFT',
+        		client_secret: 'VQK3RSPV4V2UM4HJOCHL2XRMUGOQYACBDJ5BIEBC210W2FV4',
         		ll: lat + ',' + lng,
         		query: 'mexican',
         		v: '20170801',
@@ -40,21 +40,21 @@ class Header extends Component {
         let string = "https://api.foursquare.com/v2/venues/" + items.id + '/photos';
         axios.get(string , {
           params: {
-          client_id: 'RN3TFCPNS0XOCEGT2XEC4E5ZCHMFA2BPSIJ5UIKZT3ROTWOU',
-          client_secret: 'AHW0LBIZY2IAMIAGFFQ2FKZB44AVMW4UVF5QAJRY4N1S5OPN',
+          client_id: 'YG4PLISZKCEY4BGBC42XNPKXPC3JJ0KXCPZ0WMTSPSI2DWFT',
+          client_secret: 'VQK3RSPV4V2UM4HJOCHL2XRMUGOQYACBDJ5BIEBC210W2FV4',
           v: '20170801',
           VENUE_ID: items.id,
           limit: 1,
           }
-          }).then(res => {
-              let obj = {
-                id: items.id,
-                photos: res.data.response.photos.items[0].prefix +
-                  '300x300' + res.data.response.photos.items[0].suffix
-                }
-              console.log('this is obj  '+ JSON.stringify(obj));
-              console.log(this.props.photos.photos)
-              this.props.setPhotos(obj)
+        }).then(res => {
+            let obj = {
+              id: items.id,
+              photos: (res.data.response.photos.items[0] ?
+                res.data.response.photos.items[0].prefix +
+                  '300x300' + res.data.response.photos.items[0].suffix :
+                'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg')
+              }
+              this.props.setPhotos(obj);
             }).catch(error => {
                 console.log(error);
             })
