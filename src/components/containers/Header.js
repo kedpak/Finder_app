@@ -76,7 +76,7 @@ class Header extends Component {
       .catch(error => console.error('Error', error))
     /* reset api data list back to empty for new search */
     this.props.apiData.apiData = [];
-    this.state.address = '';
+    this.setState({address: ''});
   }
 
   render() {
