@@ -87,10 +87,8 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="searchBar">
-          <PlacesAutocomplete className="autos" inputProps={inputProps}/>
+          <PlacesAutocomplete className="autos" inputProps={inputProps} default="search"/>
           <button onClick={this.handleFormSubmit} className="button">Submit</button>
-        </div>
-        <div className="select">
           <SelectQuery state={this.state.query} option={this.changeOption} />
         </div>
       </div>

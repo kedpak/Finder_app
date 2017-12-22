@@ -15,20 +15,24 @@ class SelectQuery extends Component {
         options={[
           { value: 'Pizza', label: 'Pizza' },
           { value: 'Bars', label: 'Bars' },
-          { value: 'Diner', label: 'Diner' },
           { value: 'Burger', label: 'Burger' },
+          { value: 'Sandwich', label: 'Sandwich' },
           { value: 'Mexican', label: 'Mexican' },
           { value: 'Brunch', label: 'Brunch' },
           { value: 'Coffee', label: 'Coffee' },
+          { value: 'Ice Cream', label: 'Ice Cream' },
           { value: 'Breakfast', label: 'Breakfast' },
           { value: 'Lunch', label: 'Lunch' },
           { value: 'Dinner', label: 'Dinner' },
           { value: 'Chinese', label: 'Chinese' },
           { value: 'Japanese', label: 'Japanese' },
           { value: 'Korean', label: 'Korean' },
+          { value: 'Thai', label: 'Thai' },
           { value: 'Italian', label: 'Italian' },
           { value: 'Indian', label: 'Indian' },
-          { value: 'Mediterranean', label: 'Mediterranean' }
+          { value: 'Mediterranean', label: 'Mediterranean' },
+          { value: 'Bagel', label: 'Bagel' },
+          { value: 'Boba', label: 'Boba' }
         ]}
         clearable={false}
       />

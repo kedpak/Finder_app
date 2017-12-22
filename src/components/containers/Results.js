@@ -7,12 +7,20 @@ class Results extends Component {
   click = () => {
     this.props.togglePopUp();
   }
+
+  handleNoResult = () => {
+      return (<div className="noResult"> nodata </div>)
+  }
   /* builds rows as displays which match results from correct gps coords */
   buildRows = (click) => {
     const altImg = 'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg';
     return (
       <div>
+      {this.props.apiData.apiData.length < 1 &&
+        this.props.location.location !== '' ? <div className="noResult"> SORRY No Results </div> :
+      <div>
       {this.props.apiData.apiData.map(items => {
+
         return (
             <div className="row" onClick={(event) => {this.props.setCoord(items.location); this.props.togglePopUp();}} >
               <div className="rowName" key={items.name}>{items.name}</div>
@@ -28,12 +36,13 @@ class Results extends Component {
           )
       })}
       </div>
+    }
+    </div>
     )
   }
   render() {
     const { click } = this.props;
     const rows = this.buildRows(click);
-    console.log(this.props.apiData.apiData);
     return (
       <div className="resultRow">
         {rows}
