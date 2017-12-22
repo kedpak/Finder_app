@@ -20,7 +20,6 @@ class Results extends Component {
         this.props.location.location !== '' ? <div className="noResult"> SORRY No Results </div> :
       <div>
       {this.props.apiData.apiData.map(items => {
-
         return (
             <div className="row" onClick={(event) => {this.props.setCoord(items.location); this.props.togglePopUp();}} >
               <div className="rowName" key={items.name}>{items.name}</div>

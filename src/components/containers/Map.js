@@ -17,25 +17,21 @@ class MapResult extends Component {
               lat: this.props.coord.coord.lat,
               lng: this.props.coord.coord.lng
             }}
-          style={{width:'300px', height:'300px', position:'relative', margin:'auto'}}>
-          <Marker onClick={this.onMarkerClick}
-                       name={'Current location'} />
-                   <InfoWindow onClose={this.onInfoWindowClose}>
-                   </InfoWindow>
+            style={{width:'300px', height:'300px', position:'relative', margin:'auto'}}>
+            <Marker onClick={this.onMarkerClick}
+                  name={'Current location'} />
+                  <InfoWindow onClose={this.onInfoWindowClose}>
+                  </InfoWindow>
                   <button className="mapButton" onClick={this.closeMap}> Close Floppydisk </button>
           </Map>
-
       </div>
-    )
-  }
-
+    )}
   render() {
     return (
       <div className="mapRow">
         {this.props.popUp.togglePopUp ? this.buildMap() : null}
       </div>
     )
-
   }
 }
 

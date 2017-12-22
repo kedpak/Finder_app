@@ -53,19 +53,19 @@ class Header extends Component {
           VENUE_ID: items.id,
           limit: 1,
           }
-        }).then(res => {
+          }).then(res => {
             let obj = {
               id: items.id,
               photos: (res.data.response.photos.items[0] ?
                 res.data.response.photos.items[0].prefix +
-                  '230x230' + res.data.response.photos.items[0].suffix :
+                '230x230' + res.data.response.photos.items[0].suffix :
                 'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg')
-              }
-              this.props.setPhotos(obj);
-            }).catch(error => {
+                }
+                this.props.setPhotos(obj);
+                }).catch(error => {
                 console.log(error);
+              })
             })
-      })
   }
   /* handles submit button click, finds geocode coords from auto fill and sets it to prop.location */
   handleFormSubmit = () => {
