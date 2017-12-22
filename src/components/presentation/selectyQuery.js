@@ -16,7 +16,7 @@ class SelectQuery extends Component {
           { value: 'Pizza', label: 'Pizza' },
           { value: 'Bars', label: 'Bars' },
           { value: 'Diner', label: 'Diner' },
-          { value: 'Hamburger', label: 'Hamburger' },
+          { value: 'Burger', label: 'Burger' },
           { value: 'Mexican', label: 'Mexican' },
           { value: 'Brunch', label: 'Brunch' },
           { value: 'Coffee', label: 'Coffee' },

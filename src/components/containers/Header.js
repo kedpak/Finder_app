@@ -14,8 +14,8 @@ class Header extends Component {
     this.onChange = (address) => this.setState({address});
     }
 
-
-    changeOption = (state) => {
+  /* changes type of place to find */
+  changeOption = (state) => {
       this.setState({
         query: state
       })
@@ -76,6 +76,7 @@ class Header extends Component {
       .catch(error => console.error('Error', error))
     /* reset api data list back to empty for new search */
     this.props.apiData.apiData = [];
+    this.state.address = '';
   }
 
   render() {
@@ -88,9 +89,10 @@ class Header extends Component {
         <div className="searchBar">
           <PlacesAutocomplete className="autos" inputProps={inputProps}/>
           <button onClick={this.handleFormSubmit} className="button">Submit</button>
+        </div>
+        <div className="select">
           <SelectQuery state={this.state.query} option={this.changeOption} />
         </div>
-
       </div>
     )
   }
