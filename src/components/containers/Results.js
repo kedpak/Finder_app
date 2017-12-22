@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { setLocation, setData, setPhotos, setCoord, togglePopUp } from '../../actions/actions';
 import { connect } from 'react-redux';
 
+
+/* this component handles the search results and returns data from 4square api */
 class Results extends Component {
 
   click = () => {

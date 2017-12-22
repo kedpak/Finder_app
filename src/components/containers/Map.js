@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { setLocation, setData, setPhotos, setCoord, togglePopUp } from '../../actions/actions';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
+
+/* component handles map displayed when result box is clicked */
 class MapResult extends Component {
 
   closeMap = () => {

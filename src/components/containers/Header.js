@@ -6,7 +6,7 @@ import { setLocation, setData, setPhotos, setCoord } from '../../actions/actions
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-
+/* this is the header component which consists of search bar and select menu */
 class Header extends Component {
   constructor() {
     super();

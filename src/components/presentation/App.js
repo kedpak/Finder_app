@@ -5,7 +5,7 @@ import MapPopup from '../containers/Map';
 import './App.css';
 
 class App extends Component {
-
+  /* this is root component */
   render() {
     return (
       <div className="App">

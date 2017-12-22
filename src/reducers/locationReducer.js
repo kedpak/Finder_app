@@ -1,6 +1,8 @@
 import { SET_LOCATION, SET_API_DATA, SET_PHOTOS, MAP_COORD, TOGGLE_POPUP } from '../constants/constants';
 import initialState from '../initialState';
 
+
+/* reducers for actions */
 export default function(state = initialState, action) {
   let newState = Object.assign({}, state);
 
