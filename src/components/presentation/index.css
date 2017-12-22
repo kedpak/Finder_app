@@ -51,7 +51,10 @@ body {
   transform: scale(1.1);
 
 }
-
+.noResult {
+  margin: auto;
+  font-size: 30px;
+}
 .rowAddress{
   font-size: 14px;
 }

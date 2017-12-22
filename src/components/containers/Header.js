@@ -27,8 +27,8 @@ class Header extends Component {
           console.log(query)
           axios.get('https://api.foursquare.com/v2/venues/search', {
       	    params: {
-        		client_id: 'UVRXAC0IFKHS24Y1H2I03WMWRCMKR5K1VYLJAKH151EPGZBJ',
-        		client_secret: 'FCMEU0BQXXKL0X5POMIAWKUC0S1BP3UMY0OEMOK04XG2MUBN',
+        		client_id: 'PAB20IBSWBGAPWCWI1RKOJDBI4RNZ3MYFEM4YFQILY4P30KF',
+        		client_secret: 'H2HVASEVFAMDVULVQCWF3KZHJ1IOGT53MNVOTND5VKKQAKVZ',
         		ll: lat + ',' + lng,
         		query: query,
         		v: '20170801',
@@ -47,8 +47,8 @@ class Header extends Component {
         let string = "https://api.foursquare.com/v2/venues/" + items.id + '/photos';
         axios.get(string , {
           params: {
-          client_id: 'UVRXAC0IFKHS24Y1H2I03WMWRCMKR5K1VYLJAKH151EPGZBJ',
-          client_secret: 'FCMEU0BQXXKL0X5POMIAWKUC0S1BP3UMY0OEMOK04XG2MUBN',
+          client_id: 'PAB20IBSWBGAPWCWI1RKOJDBI4RNZ3MYFEM4YFQILY4P30KF',
+          client_secret: 'H2HVASEVFAMDVULVQCWF3KZHJ1IOGT53MNVOTND5VKKQAKVZ',
           v: '20170801',
           VENUE_ID: items.id,
           limit: 1,
