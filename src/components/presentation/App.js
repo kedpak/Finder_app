@@ -6,14 +6,6 @@ import './App.css';
 
 class App extends Component {
 
-
-  onResultClick = () => {
-    console.log('yoooo')
-      this.setState({
-        togglePopUp: !this.state.togglePopUp
-      })
-  }
-
   render() {
     return (
       <div className="App">

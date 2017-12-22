@@ -1,3 +1,5 @@
+/* Initial state */
+
 const initialState = {
   location: '',
   type: '',

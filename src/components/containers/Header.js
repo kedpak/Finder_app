@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import initialState from '../../initialState';
 import SelectQuery from '../presentation/selectyQuery';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { setLocation, setData, setPhotos, setCoord } from '../../actions/actions';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -29,8 +27,8 @@ class Header extends Component {
           console.log(query)
           axios.get('https://api.foursquare.com/v2/venues/search', {
       	    params: {
-        		client_id: 'ZGCR5PQHXOYXY5SBUSBUOZV4MYS300FPGL13YXVSCW1JXQLP',
-        		client_secret: 'V5IXEPB2MXLKYVK02QVVKOT5HTQCKLRZC5MWPXBD1AKHTNGZ',
+        		client_id: 'UVRXAC0IFKHS24Y1H2I03WMWRCMKR5K1VYLJAKH151EPGZBJ',
+        		client_secret: 'FCMEU0BQXXKL0X5POMIAWKUC0S1BP3UMY0OEMOK04XG2MUBN',
         		ll: lat + ',' + lng,
         		query: query,
         		v: '20170801',
@@ -49,8 +47,8 @@ class Header extends Component {
         let string = "https://api.foursquare.com/v2/venues/" + items.id + '/photos';
         axios.get(string , {
           params: {
-          client_id: 'ZGCR5PQHXOYXY5SBUSBUOZV4MYS300FPGL13YXVSCW1JXQLP',
-          client_secret: 'V5IXEPB2MXLKYVK02QVVKOT5HTQCKLRZC5MWPXBD1AKHTNGZ',
+          client_id: 'UVRXAC0IFKHS24Y1H2I03WMWRCMKR5K1VYLJAKH151EPGZBJ',
+          client_secret: 'FCMEU0BQXXKL0X5POMIAWKUC0S1BP3UMY0OEMOK04XG2MUBN',
           v: '20170801',
           VENUE_ID: items.id,
           limit: 1,
@@ -60,8 +58,8 @@ class Header extends Component {
               id: items.id,
               photos: (res.data.response.photos.items[0] ?
                 res.data.response.photos.items[0].prefix +
-                  '300x300' + res.data.response.photos.items[0].suffix :
-                'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg  ')
+                  '230x230' + res.data.response.photos.items[0].suffix :
+                'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg')
               }
               this.props.setPhotos(obj);
             }).catch(error => {
@@ -85,12 +83,14 @@ class Header extends Component {
       value: this.state.address,
       onChange: this.onChange
     }
-    console.log(this.state.query.label)
     return (
       <div className="Header">
-        <PlacesAutocomplete className="autos" inputProps={inputProps}/>
-        <button onClick={this.handleFormSubmit} className="button">Submit</button>
-        <SelectQuery state={this.state.query} option={this.changeOption} />
+        <div className="searchBar">
+          <PlacesAutocomplete className="autos" inputProps={inputProps}/>
+          <button onClick={this.handleFormSubmit} className="button">Submit</button>
+          <SelectQuery state={this.state.query} option={this.changeOption} />
+        </div>
+
       </div>
     )
   }

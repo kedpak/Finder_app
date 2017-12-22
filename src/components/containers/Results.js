@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { setLocation, setData, setPhotos, setCoord, togglePopUp } from '../../actions/actions';
 import { connect } from 'react-redux';
 
@@ -10,19 +9,20 @@ class Results extends Component {
   }
   /* builds rows as displays which match results from correct gps coords */
   buildRows = (click) => {
+    const altImg = 'http://w4divas.com/wp-content/themes/wp-lollipop/assets/images/no-image.jpg';
     return (
       <div>
       {this.props.apiData.apiData.map(items => {
         return (
             <div className="row" onClick={(event) => {this.props.setCoord(items.location); this.props.togglePopUp();}} >
-              <div className="rowName" key={items}>{items.name}</div>
-              <div className="rowPhone" key={items}>{items.contact.phone}</div>
-              <div className="rowPhone" key={items}>{items.id}</div>
+              <div className="rowName" key={items.name}>{items.name}</div>
+              <div className="rowPhone" key={items.contact.phone}>{items.contact.phone}</div>
+              <div className="rowAddress" key={items.location.formattedAddress[0]}>{items.location.formattedAddress}</div>
               {this.props.photos.photos.map(item => {
                 if (item.id === items.id) {
-                  return (<img src={item.photos} className="pic"/>)
+                  return (<img src={item.photos} className="pic" alt={altImg}/>)
                 }
-              return
+                return null;
               })}
             </div>
           )
@@ -33,7 +33,7 @@ class Results extends Component {
   render() {
     const { click } = this.props;
     const rows = this.buildRows(click);
-    console.log(this.props.coord);
+    console.log(this.props.apiData.apiData);
     return (
       <div className="resultRow">
         {rows}

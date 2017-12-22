@@ -6,7 +6,6 @@ export default function(state = initialState, action) {
 
   switch (action.type) {
     case SET_LOCATION:
-        console.log('SET_LOCATION: ' + JSON.stringify(action.payload));
         newState['location'] = action.payload;
         return newState;
     case SET_API_DATA:
@@ -18,15 +17,12 @@ export default function(state = initialState, action) {
           newState['photos'].push(action.payload);
           return newState;
         }
-        console.log(newState['photos']);
         return newState;
     case MAP_COORD:
       newState['coord'] = action.payload;
-      console.log(newState);
       return newState;
     case TOGGLE_POPUP:
       newState['togglePopUp'] = !newState['togglePopUp'];
-      console.log(newState['togglePopUp']);
       return newState;
     default:
       return state;

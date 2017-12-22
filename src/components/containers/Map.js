@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 import { setLocation, setData, setPhotos, setCoord, togglePopUp } from '../../actions/actions';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class MapResult extends Component {
 
   closeMap = () => {
     this.props.togglePopUp();
   }
+  /* sets up google map with cooresponding lat long coords */
   buildMap = () => {
-    console.log(this.props.coord.coord.lat);
     return (
       <div className="popUpMap">
           <Map google={this.props.google} zoom={14}
@@ -23,16 +22,14 @@ class MapResult extends Component {
                        name={'Current location'} />
                    <InfoWindow onClose={this.onInfoWindowClose}>
                    </InfoWindow>
-                  <button className="mapButton" onClick={this.closeMap}> Close </button>
+                  <button className="mapButton" onClick={this.closeMap}> Close Floppydisk </button>
           </Map>
-          <button className="mapButton" onClick={this.closeMap}> Close </button>
+
       </div>
     )
   }
 
   render() {
-    const map = this.buildMap();
-    console.log(this.props.popUp.togglePopUp)
     return (
       <div className="mapRow">
         {this.props.popUp.togglePopUp ? this.buildMap() : null}
