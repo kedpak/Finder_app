@@ -20,9 +20,8 @@ This select menu consists of different categories of restaurants/stores to choos
 
 Click on a result container to view the location of venue through a google map. 
 
-# Installation
 
-### This app requires several modules. 
+### This app utilizes several modules. 
 
 * react
 * react-places-autocomplete (search bar to find location)
