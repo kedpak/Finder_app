@@ -1,6 +1,10 @@
 ## Finder App
 
 # Description 
+This application is a sand box application to help me learn redux. Disclaimer: Code quality is NOT optimal. 
+
+This project was made to assist me on understanding the flow of a redux application. 
+
 App that allows one to find restaurants or events near the area. Find results within 50 mile radius of search perameter.
 
 ## Search Bar
@@ -19,18 +23,6 @@ This select menu consists of different categories of restaurants/stores to choos
 ## Map
 
 Click on a result container to view the location of venue through a google map. 
-
-
-### This app utilizes several modules. 
-
-* react
-* react-places-autocomplete (search bar to find location)
-* react-redux   (state manager)
-* axios     
-* redux   (state manager)
-* redux-thunk  (handles async redux)
-* google-maps-react     
-* react-select   (selection drop down menu)
 
 Utilizes FourSquare API and GoogleMaps API.
 
